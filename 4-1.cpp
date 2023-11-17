@@ -49,7 +49,7 @@ int main()
 /*
 	//버블 정렬 프로그램 1 (백준 1377번)
 
-*/
+
 int main()
 {
 	ios::sync_with_stdio(false);
@@ -72,7 +72,7 @@ int main()
 	for (int i= 0; i < n; i++)
 	{
 		if (max < A[i].second - 1)
-			max = A[i].second - 1;
+	 		max = A[i].second - 1;
 	}
 	cout << max + 1;
-}
+}*/
