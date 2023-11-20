@@ -69,7 +69,7 @@ int partition(vector<int>& A, int s, int e)
 		}
 		if (i <= j)
 		{
-			swap(A, i++, j--);
+			swap(A, i++, j--); 
 		}
 	}
 	A[s] = A[j];
