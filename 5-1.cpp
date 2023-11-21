@@ -181,3 +181,143 @@ void DFS(int now, int depth)
 	}
 	visited[now] = false;
 }*/
+
+
+
+/*
+	//DFS와 BFS 프로그램 (백준 1260번)
+
+static vector<vector<int>>A;
+static vector<bool>visited;
+static bool arrive;
+void DFS(int node);
+void BFS(int node);
+
+int main()
+{
+	ios::sync_with_stdio(false);
+	cin.tie(NULL);
+	cout.tie(NULL);
+
+	int n, m, start;
+	arrive = false;
+	cin >> n >> m >> start;
+	A.resize(n + 1);
+
+	for (int i = 0; i < m; i++)
+	{
+		int s, e;
+		cin >> s >> e;
+		A[s].push_back(e);
+		A[e].push_back(s);
+	}
+
+	for (int i = 1; i <= n; i++)
+	{
+		sort(A[i].begin(), A[i].end());
+	}
+
+	visited = vector<bool>(n + 1, false);
+
+	DFS(start);
+	cout << "\n";
+	fill(visited.begin(), visited.end(), false);
+	BFS(start);
+	cout << "\n";
+}
+void DFS(int node)
+{
+	cout << node << " ";
+	visited[node] = true;
+
+	for (int i : A[node])
+	{
+		if (!visited[i])
+			DFS(i);
+	}
+}
+void BFS(int node)
+{
+	queue<int>myqueue;
+	myqueue.push(node);
+	visited[node] = true;
+
+	while (!myqueue.empty())
+	{
+		int now_node = myqueue.front();
+		myqueue.pop();
+		cout << now_node << " ";
+		for (int i : A[now_node])
+		{
+			if (!visited[i])
+			{
+				visited[i] = true;
+				myqueue.push(i);
+			}
+		}
+	}
+}*/
+
+
+
+
+/*
+	//미로 탐색하기 (백준 2178번)
+*/
+
+static int dx[] = { 0,1,0,-1 };
+static int dy[] = { 1,0,-1,0 };
+static int A[101][101];
+static bool visited[101][101] = { false };
+static int n, m;
+void BFS(int i, int j);
+
+int main()
+{
+	ios::sync_with_stdio(false);
+	cin.tie(NULL);
+	cout.tie(NULL);
+
+	cin >> n >> m;
+
+	for (int i = 0; i < n; i++)
+	{
+		string s;
+		for (int j = 0; j < m; j++)
+		{
+			A[i][j] = s[j] - '0';
+		}
+	}
+	BFS(0, 0);
+	cout << A[n - 1][m - 1] << "\n";
+}
+void BFS(int i, int j)
+{
+	queue < pair<int, int>>myqueue;
+	myqueue.push(make_pair(i, j));
+
+	while (!myqueue.empty())
+	{
+		int now[2];
+		now[0] = myqueue.front().first;
+		now[1] = myqueue.front().second;
+		myqueue.pop();
+		visited[i][j] = true;
+
+		for (int k = 0; k < 4; k++)
+		{
+			int x = now[0] + dx[k];
+			int y = now[1] + dy[k];
+
+			if (x >= 0 && y >= 0 && x < n && y < m)
+			{
+				if (A[x][y] != 0 && !visited[x][y])
+				{
+					visited[x][y] = true;
+					A[x][y] = A[now[0]][now[1]] + 1;
+					myqueue.push(make_pair(x, y));
+				}
+			}
+		}
+	}
+}
