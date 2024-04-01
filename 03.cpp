@@ -55,6 +55,7 @@ int main()
 }*/
 
 
+/*
 //평균 구하기(39) 백준(1546)
 int main()
 {
@@ -79,5 +80,40 @@ int main()
 		result += num[k];
 	}
 	cout <<">>> "<< result * 100 / maxVal / a;
-}
+}*/
+
+
+
+//구간 합 구하기
+int main()
+{
+	ios::sync_with_stdio(false);
+	cin.tie(NULL);
+	cout.tie(NULL);
+
+	int suNo, quizNo;
+	cout << ">>> ";
+	cin >> suNo >> quizNo;
+	int s[100001] = {};
+
+	cout << ">>> ";
+	for (int i = 1; i <= suNo; i++)
+	{
+		int temp;
+		
+		cin >> temp;
+		s[i] = s[i - 1] + temp;
+	}
+
+	for (int i = 0; i < quizNo; i++)
+	{
+		int start, end;
+		cout << ">>> ";
+		cin >> start >> end;
+		cout << s[end] - s[start - 1] << "\n";
+	}
+}*/
+
+
+
 
